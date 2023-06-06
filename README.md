@@ -35,7 +35,7 @@ services:
 ```
 - Создаём pathfinder-var.env (со своим API)
 ```
-PATHFINDER_ETHEREUM_API_URL=https://eth-goerli.g.alchemy.com/v2/******
+PATHFINDER_ETHEREUM_API_URL=https://eth-goerli.g.alchemy.com/v2/https://eth-goerli.g.alchemy.com/v2/xIfcRx19SCf05gMKkEL7RJDexILs4ykB
 ```
 4. Настроить dockerfile инструкцию HEALTHCHECK и добавить проверку в проект.
 
