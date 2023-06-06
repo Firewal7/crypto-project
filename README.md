@@ -56,7 +56,7 @@ CONTAINER ID   IMAGE                      COMMAND                  CREATED      
 ```
 5. Написать Ansible-Playbook для развертывания приложения и вынести в отдельную Ansible Role атомарные операции.
 
-[Ansible-Playbook]()
+[Ansible-Playbook](https://github.com/Firewal7/crypto-project/blob/main/ansible/playbook.yml)
 
 
 ### Medium
