@@ -58,7 +58,51 @@ CONTAINER ID   IMAGE                      COMMAND                  CREATED      
 
 [Ansible-Playbook](https://github.com/Firewal7/crypto-project/blob/main/ansible/playbook.yml)
 
+```
+└─# ansible-playbook playbook.yml                                       
 
+PLAY [node1] ********************************************************************************************************
+
+TASK [Install docker packages] **************************************************************************************
+ok: [node1-01] => (item=apt-transport-https)
+ok: [node1-01] => (item=ca-certificates)
+ok: [node1-01] => (item=curl)
+ok: [node1-01] => (item=software-properties-common)
+
+TASK [Add Docker s official GPG key] ********************************************************************************
+ok: [node1-01]
+
+TASK [Verify that we have the key with the fingerprint] *************************************************************
+ok: [node1-01]
+
+TASK [Set up the stable repository] *********************************************************************************
+ok: [node1-01]
+
+TASK [Update apt packages] ******************************************************************************************
+changed: [node1-01]
+
+TASK [Install docker] ***********************************************************************************************
+ok: [node1-01]
+
+TASK [Add remote "ubuntu" user to "docker" group] *******************************************************************
+ok: [node1-01]
+
+TASK [Install docker-compose] ***************************************************************************************
+ok: [node1-01]
+
+TASK [Start container with healthstatus] ****************************************************************************
+changed: [node1-01]
+
+PLAY RECAP **********************************************************************************************************
+node1-01                   : ok=9    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
+```
+```
+# ssh user@62.84.119.234
+
+user@node1:~$ sudo docker ps
+CONTAINER ID   IMAGE                      COMMAND                  CREATED              STATUS                                 PORTS                    NAMES
+49216ab5bc84   eqlabs/pathfinder:latest   "/usr/bin/tini -- /u…"   About a minute ago   Up About a minute (health: starting)   0.0.0.0:9545->9545/tcp   pathfinder
+```
 ### Medium
 1. Установить на виртуалку monitoring Grafana. Loki. Prometeus. Установить на ноду Prometeus-exporter и настроить сбор метрик на работоспособность контейнера с нодой.
 2. Написать отдельные роли для развертывания системы мониторинга Grafana, Loki, Prometeus.
