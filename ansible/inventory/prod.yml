@@ -2,13 +2,13 @@
 node1:
   hosts:
      node1-01:
-      ansible_host: 62.84.119.234
+      ansible_host: 158.160.15.227
       ansible_user: user
       ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
 
 monitoring:
   hosts:
     monitoring-01:
-      ansible_host: 51.250.92.229
+      ansible_host: 158.160.18.87
       ansible_user: user
       ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
