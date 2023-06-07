@@ -106,6 +106,15 @@ CONTAINER ID   IMAGE                      COMMAND                  CREATED      
 ### Medium
 1. Установить на виртуалку monitoring Grafana. Loki. Prometheus. Установить на ноду Prometheus-exporter и настроить сбор метрик на работоспособность контейнера с нодой.
 
+#### Установил на VM monitoring: Grafana, Prometheus, Loki. 
+
+#### Установил на VM node1: Node-exporter, Promtail (агент loki).
+
+![Ссылка 3](https://github.com/Firewal7/crypto-project/blob/main/image/1.4.jpg)
+
+![Ссылка 3](https://github.com/Firewal7/crypto-project/blob/main/image/1.5.jpg)
+
+![Ссылка 3](https://github.com/Firewal7/crypto-project/blob/main/image/1.6.jpg)
 
 2. Написать отдельные роли для развертывания системы мониторинга Grafana, Loki, Prometheus.
 3. Написать Ansible Role для Prometheus-exporter и настроить сбор метрик на работоспособность контейнера с нодой.
