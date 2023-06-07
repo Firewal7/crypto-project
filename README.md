@@ -131,7 +131,7 @@ CONTAINER ID   IMAGE                      COMMAND                  CREATED      
 
 #### Установил на VM monitoring: Grafana, Prometheus, Loki. 
 
-#### Установил на VM node1: Node-exporter (собирает метрики операционной системы, передаёт Prometheus), Promtail (агент передающий содержимое локальных логов на Loki).
+#### Установил на VM node1: Node-exporter (собирает метрики операционной системы, передаёт Prometheus), Promtail (агент, передающий содержимое локальных логов на Loki).
 
 ![Ссылка 3](https://github.com/Firewal7/crypto-project/blob/main/image/1.3.jpg)
 
