@@ -1,5 +1,7 @@
 # «Crypto node»
 
+![Официальный репозиторий Pathfinder](https://github.com/eqlabs/pathfinder)
+
 ## Чекпоинты по уровню сложности:
 
 :white_check_mark: - Выполнено.
