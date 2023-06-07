@@ -5,7 +5,7 @@
 ### Light
 1. Создать ноду любым удобным способом: в облаке или локально через Vagrant. Запланировать две виртуальные машины, первая для самой ноды (node1), вторая с системой мониторинга (monitoring).
 
-![Ссылка 1](https://github.com/Firewal7/crypto-project/blob/main/image/1.1.jpg)
+![Ссылка 1](https://github.com/Firewal7/crypto-project/blob/main/image/1.0.jpg)
 
 2. Зарегистрировать приложение в сервисе Academy, если планируете получение наград в будущем. 
 
@@ -105,9 +105,7 @@ CONTAINER ID   IMAGE                      COMMAND                  CREATED      
 ```
 ### Medium
 1. Установить на виртуалку monitoring Grafana. Loki. Prometheus. Установить на ноду Prometheus-exporter и настроить сбор метрик на работоспособность контейнера с нодой.
-```
 
-```
 
 2. Написать отдельные роли для развертывания системы мониторинга Grafana, Loki, Prometheus.
 3. Написать Ansible Role для Prometheus-exporter и настроить сбор метрик на работоспособность контейнера с нодой.
