@@ -1,6 +1,6 @@
 # «Crypto node»
 
-![Официальный репозиторий Pathfinder](https://github.com/eqlabs/pathfinder)
+[Официальный репозиторий Pathfinder](https://github.com/eqlabs/pathfinder)
 
 ## Чекпоинты по уровню сложности:
 
