@@ -5,7 +5,7 @@
 ### Light
 1. Создать ноду любым удобным способом: в облаке или локально через Vagrant. Запланировать две виртуальные машины, первая для самой ноды (node1), вторая с системой мониторинга (monitoring).
 
-![Ссылка 1](https://github.com/Firewal7/crypto-project/blob/main/image/1.1.jpg)
+![Ссылка 1](https://github.com/Firewal7/crypto-project/blob/main/image/1.0.jpg)
 
 2. Зарегистрировать приложение в сервисе Academy, если планируете получение наград в будущем. 
 
