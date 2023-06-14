@@ -9,7 +9,7 @@
 
 
 - name: install monitoring
-  hosts: man
+  hosts: monitoring
   become: yes
   gather_facts: false
 

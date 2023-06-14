@@ -17,7 +17,7 @@
     dest: ./
     remote_src: yes
 
-- name: Copy file with owner and permissions
+- name: Copy file 
   ansible.builtin.copy:
     src: /home/user/loki-linux-amd64
     dest: /usr/local/bin/loki
@@ -29,7 +29,7 @@
     path: /usr/local/bin/loki
     mode: '0744'
 
-- name: Run 
+- name: Create a directory
   ansible.builtin.shell: |
     sudo mkdir -p /data/loki
 
@@ -45,7 +45,7 @@
     dest: /etc/systemd/system/loki.service
     mode: "0644"    
 
-- name: start and enable loki
+- name: Start and enable loki
   service:
     name: loki
     state: started
