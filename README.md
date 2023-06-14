@@ -15,7 +15,7 @@
 
 ### Medium
 1. :white_check_mark: Установить на виртуалку monitoring Grafana. Loki. Prometheus. Установить на ноду Prometheus-exporter и настроить сбор метрик на работоспособность контейнера с нодой.
-2. Написать отдельные роли для развертывания системы мониторинга Grafana, Loki, Prometheus.
+2. :white_check_mark: Написать отдельные роли для развертывания системы мониторинга Grafana, Loki, Prometheus.
 3. Написать Ansible Role для Prometheus-exporter и настроить сбор метрик на работоспособность контейнера с нодой.
 4. Виртуализировать метрики через Grafana.
    
