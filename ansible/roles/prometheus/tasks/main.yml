@@ -14,7 +14,7 @@
 
 - name: Copy file prometheus.yml
   ansible.builtin.copy:
-    src: /home/kali/crypto-poject_1/ansible/roles/prometheus/templates/prometheus.yml
+    src: /home/kali/crypto-poject_1/ansible/roles/prometheus/files/prometheus.yml
     dest: /home/user/prometheus-2.45.0-rc.0.linux-amd64/prometheus.yml
     mode: "0644"
 

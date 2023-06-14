@@ -6,7 +6,7 @@
   roles: 
     - docker_install
     - container_pathfinder
-
+    - prometheus-exporter
 
 - name: install monitoring
   hosts: monitoring
@@ -17,3 +17,4 @@
     - grafana
     - prometheus
     - loki
+    

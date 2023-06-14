@@ -1,0 +1,21 @@
+---
+# tasks file for prometheus-exporter
+
+- name: Get node-exporter distrib
+  ansible.builtin.get_url:
+    url: "https://github.com/prometheus/node_exporter/releases/download/v1.6.0/node_exporter-1.6.0.linux-amd64.tar.gz"
+    dest: "./node_exporter-1.6.0.linux-amd64.tar.gz"
+    mode: "0644"
+
+- name: Unarchive a file 
+  ansible.builtin.unarchive:
+    src: "./node_exporter-1.6.0.linux-amd64.tar.gz"
+    dest: ./
+    remote_src: yes    
+
+- name: Run Prometheus
+  ansible.builtin.shell: |
+    cd /home/user/node_exporter-1.6.0.linux-amd64
+    sudo ./node_exporter &    
+
+    

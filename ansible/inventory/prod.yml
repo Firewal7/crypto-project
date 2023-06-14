@@ -13,9 +13,16 @@ monitoring:
       ansible_user: user
       ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
 
-man:
+mon:
   hosts:
-    man-01:
-      ansible_host: 84.201.166.178
+    mon-00:
+      ansible_host: 158.160.20.49
       ansible_user: user
       ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
+
+mon1:
+  hosts:
+    mon-01:
+      ansible_host: 84.201.167.226
+      ansible_user: user
+      ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'      
