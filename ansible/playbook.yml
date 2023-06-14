@@ -1,7 +1,19 @@
-- hosts: node1
+- name: install utils
+  hosts: node1
   become: yes
   gather_facts: false
   
   roles: 
     - docker_install
     - container_pathfinder
+
+
+- name: install monitoring
+  hosts: man
+  become: yes
+  gather_facts: false
+
+  roles: 
+    - grafana
+    - prometheus
+    - loki

@@ -1,0 +1,27 @@
+---
+# tasks file for prometheus
+- name: Get Prometheus distrib
+  ansible.builtin.get_url:
+    url: "https://github.com/prometheus/prometheus/releases/download/v2.45.0-rc.0/prometheus-2.45.0-rc.0.linux-amd64.tar.gz"
+    dest: "./prometheus-2.45.0-rc.0.linux-amd64.tar.gz"
+    mode: "0644"
+
+- name: Unarchive a file 
+  ansible.builtin.unarchive:
+    src: "./prometheus-2.45.0-rc.0.linux-amd64.tar.gz"
+    dest: ./
+    remote_src: yes
+
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    src: /home/kali/crypto-poject_1/ansible/roles/prometheus/templates/prometheus.yml
+    dest: /home/user/prometheus-2.45.0-rc.0.linux-amd64/prometheus.yml
+    mode: "0644"
+
+- name: Run Prometheus
+  ansible.builtin.shell: |
+    cd /home/user/prometheus-2.45.0-rc.0.linux-amd64
+    sudo ./prometheus --config.file=./prometheus.yml &
+
+
+

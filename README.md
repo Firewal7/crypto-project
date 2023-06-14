@@ -137,9 +137,9 @@ CONTAINER ID   IMAGE                      COMMAND                  CREATED      
 
 ![Ссылка 3](https://github.com/Firewal7/crypto-project/blob/main/image/1.3.jpg)
 
-![Ссылка 3](https://github.com/Firewal7/crypto-project/blob/main/image/1.4.jpg)
+![Ссылка 4](https://github.com/Firewal7/crypto-project/blob/main/image/1.4.jpg)
 
-![Ссылка 3](https://github.com/Firewal7/crypto-project/blob/main/image/1.5.jpg)
+![Ссылка 5](https://github.com/Firewal7/crypto-project/blob/main/image/1.5.jpg)
 
 2. Написать отдельные роли для развертывания системы мониторинга Grafana, Loki, Prometheus.
 3. Написать Ansible Role для Prometheus-exporter и настроить сбор метрик на работоспособность контейнера с нодой.
