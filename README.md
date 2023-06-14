@@ -28,15 +28,15 @@
 
 
 ### Light
-1. Создать ноду любым удобным способом: в облаке или локально через Vagrant. Запланировать две виртуальные машины, первая для самой ноды (node1), вторая с системой мониторинга (monitoring).
+1. :white_check_mark: Создать ноду любым удобным способом: в облаке или локально через Vagrant. Запланировать две виртуальные машины, первая для самой ноды (node1), вторая с системой мониторинга (monitoring).
 
 ![Ссылка 1](https://github.com/Firewal7/crypto-project/blob/main/image/1.0.jpg)
 
-2. Зарегистрировать приложение в сервисе Academy, если планируете получение наград в будущем. 
+2. :white_check_mark: Зарегистрировать приложение в сервисе Academy, если планируете получение наград в будущем. 
 
 ![Ссылка 2](https://github.com/Firewal7/crypto-project/blob/main/image/1.2.jpg)
 
-3. Установить докер на node1 и запустить ноду через docker-compose.
+3. :white_check_mark: Установить докер на node1 и запустить ноду через docker-compose.
 ```
 user@node1:~$ docker --version
 Docker version 24.0.2, build cb74dfc
@@ -62,7 +62,7 @@ services:
 ```
 PATHFINDER_ETHEREUM_API_URL=https://eth-goerli.g.alchemy.com/v2/https://eth-goerli.g.alchemy.com/v2/xIfcRx19SCf05gMKkEL7RJDexILs4ykB
 ```
-4. Настроить dockerfile инструкцию HEALTHCHECK и добавить проверку в проект.
+4. :white_check_mark: Настроить dockerfile инструкцию HEALTHCHECK и добавить проверку в проект.
 
 - Добавляем в docker-compose.yml 
 ```
@@ -79,7 +79,7 @@ PATHFINDER_ETHEREUM_API_URL=https://eth-goerli.g.alchemy.com/v2/https://eth-goer
 CONTAINER ID   IMAGE                      COMMAND                  CREATED          STATUS                             PORTS                                       NAMES
 1e88e9f6511b   eqlabs/pathfinder:latest   "/usr/bin/tini -- /u…"   59 seconds ago   Up 58 seconds (health: starting)   0.0.0.0:9545->9545/tcp, :::9545->9545/tcp   crypto-project_starknet-node_1
 ```
-5. Написать Ansible-Playbook для развертывания приложения и вынести в отдельную Ansible Role атомарные операции.
+5. :white_check_mark: Написать Ansible-Playbook для развертывания приложения и вынести в отдельную Ansible Role атомарные операции.
 
 [Ansible-Playbook](https://github.com/Firewal7/crypto-project/blob/main/ansible/playbook.yml)
 
@@ -129,7 +129,7 @@ CONTAINER ID   IMAGE                      COMMAND                  CREATED      
 49216ab5bc84   eqlabs/pathfinder:latest   "/usr/bin/tini -- /u…"   About a minute ago   Up About a minute (health: starting)   0.0.0.0:9545->9545/tcp   pathfinder
 ```
 ### Medium
-1. Установить на виртуалку monitoring Grafana. Loki. Prometheus. Установить на ноду Prometheus-exporter и настроить сбор метрик на работоспособность контейнера с нодой.
+1. :white_check_mark: Установить на виртуалку monitoring Grafana. Loki. Prometheus. Установить на ноду Prometheus-exporter и настроить сбор метрик на работоспособность контейнера с нодой.
 
 #### Установил на VM monitoring: Grafana, Prometheus, Loki. 
 
@@ -141,7 +141,7 @@ CONTAINER ID   IMAGE                      COMMAND                  CREATED      
 
 ![Ссылка 5](https://github.com/Firewal7/crypto-project/blob/main/image/1.5.jpg)
 
-2. Написать отдельные роли для развертывания системы мониторинга Grafana, Loki, Prometheus.
+2. :white_check_mark: Написать отдельные роли для развертывания системы мониторинга Grafana, Loki, Prometheus.
 3. Написать Ansible Role для Prometheus-exporter и настроить сбор метрик на работоспособность контейнера с нодой.
 4. Виртуализировать метрики через Grafana.
    
