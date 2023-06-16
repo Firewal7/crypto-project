@@ -1,16 +1,16 @@
  variable "token" {
   type        = string
-  description = "AQAAAAAvafbJAATuwdLAPg798Un2j3iJLzGhuuY"
+  description = ""
 }
 
 variable "cloud_id" {
   type        = string
-  description = "b1g19chq3o5d0u2d4se6"
+  description = ""
 }
 
 variable "folder_id" {
   type        = string
-  description = "b1giheq958o43g020idm"
+  description = ""
 }
 
 variable "default_zone" {
