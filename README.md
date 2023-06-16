@@ -16,8 +16,8 @@
 ### Medium
 1. :white_check_mark: Установить на виртуалку monitoring Grafana. Loki. Prometheus. Установить на ноду Prometheus-exporter и настроить сбор метрик на работоспособность контейнера с нодой.
 2. :white_check_mark: Написать отдельные роли для развертывания системы мониторинга Grafana, Loki, Prometheus.
-3. Написать Ansible Role для Prometheus-exporter и настроить сбор метрик на работоспособность контейнера с нодой.
-4. Виртуализировать метрики через Grafana.
+3. :white_check_mark: Написать Ansible Role для Prometheus-exporter и настроить сбор метрик на работоспособность контейнера с нодой.
+4. :white_check_mark: Виртуализировать метрики через Grafana.
    
 ### Hard
 1. Развернуть несколько нод и систему мониторинга в облаке с помощью Terraform (можно использлвать любое облако на ваш выбор).
@@ -236,7 +236,7 @@ monitoring-01              : ok=17   changed=5    unreachable=0    failed=0    s
 node1-01                   : ok=9    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
 </details>
 
-3. Написать Ansible Role для Prometheus-exporter и настроить сбор метрик на работоспособность контейнера с нодой.
+3. :white_check_mark: Написать Ansible Role для Prometheus-exporter и настроить сбор метрик на работоспособность контейнера с нодой.
 
 <details>
 <summary>└─# ansible-playbook playbook.yml</summary>
@@ -379,9 +379,11 @@ monitoring-01              : ok=22   changed=21    unreachable=0    failed=0    
 node-01                    : ok=20   changed=18    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 </details>
 
-4. Виртуализировать метрики через Grafana.
+4. :white_check_mark: Виртуализировать метрики через Grafana.
 
 ![Ссылка 6](https://github.com/Firewal7/crypto-project/blob/main/image/1.6.jpg)
+
+![Ссылка 7](https://github.com/Firewal7/crypto-project/blob/main/image/1.7.jpg)
    
 ### Hard
 1. Развернуть несколько нод и систему мониторинга в облаке с помощью Terraform (можно использлвать любое облако на ваш выбор).
