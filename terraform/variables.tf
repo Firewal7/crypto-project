@@ -35,7 +35,7 @@ variable "vms_ssh_root_key" {
   type = map(any)
   default = {
    serial-port-enable   = 1
-   ssh-keys             = "ssWXOfyaJPjIAEdW6qxATpq56qHcg3FNjWT9yRvaUFK5nTpNUvvGG2qb+GVM7u3zMHitHmFJqkKyhdIthXewLAOv6pp2tCVOLPg3oPYMt+ex2of0lMqVzJMXCV0Nx9pi5nJRlY3r5BzN9bdVBtQ4IUXmhLWQ4TtDtIarTy3wqELyQVYTTEhzBYfqlehEsT+i/533K6BiBV6OvPvAU+tfklj48C94zy7a0= root@kali"
+   ssh-keys  = 
   }
 }
 ###yandex_compute_image vars
