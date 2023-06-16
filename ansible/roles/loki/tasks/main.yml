@@ -1,11 +1,13 @@
 ---
 # tasks file for loki
 - name: install dependencies
+  become: true
   package:
     name: zip
     state: present
+    update_cache: yes
 
-- name: Get Prometheus distrib
+- name: Get Loki distrib
   ansible.builtin.get_url:
     url: "https://github.com/grafana/loki/releases/download/v2.8.2/loki-linux-amd64.zip"
     dest: "./loki-linux-amd64.zip"
@@ -18,6 +20,7 @@
     remote_src: yes
 
 - name: Copy file 
+  become: true
   ansible.builtin.copy:
     src: /home/user/loki-linux-amd64
     dest: /usr/local/bin/loki
@@ -34,19 +37,25 @@
     sudo mkdir -p /data/loki
 
 - name: Copy loki-local-config.yaml
+  become: true
   ansible.builtin.copy:
     src: /home/kali/crypto-poject_1/ansible/roles/loki/files/loki-local-config.yaml
     dest: /etc/loki-local-config.yaml
     mode: "0644"
 
 - name: Copy loki.service
+  become: true
   ansible.builtin.copy:
     src: /home/kali/crypto-poject_1/ansible/roles/loki/files/loki.service
     dest: /etc/systemd/system/loki.service
     mode: "0644"    
+  notify: restart loki
 
 - name: Start and enable loki
+  become: true
   service:
     name: loki
     state: started
     enabled: true
+
+

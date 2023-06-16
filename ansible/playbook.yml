@@ -7,10 +7,10 @@
     - docker_install
     - container_pathfinder
     - prometheus-exporter
+    - promtail
 
 - name: install monitoring
   hosts: monitoring
-  become: yes
   gather_facts: false
 
   roles: 

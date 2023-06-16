@@ -1,0 +1,49 @@
+---
+# tasks file for promtail
+
+- name: install dependencies
+  package:
+    name: zip
+    state: present
+
+- name: Get Promtail distrib
+  ansible.builtin.get_url:
+    url: "https://github.com/grafana/loki/releases/download/v2.8.2/promtail-linux-amd64.zip"
+    dest: "./promtail-linux-amd64.zip"
+    mode: "0644"
+
+- name: Unarchive a file 
+  ansible.builtin.unarchive:
+    src: "./promtail-linux-amd64.zip"
+    dest: ./
+    remote_src: yes
+
+- name: Copy file 
+  ansible.builtin.copy:
+    src: /home/user/promtail-linux-amd64
+    dest: /usr/local/bin/promtail
+    mode: "0744"
+    remote_src: true
+
+- name: Change permissions
+  ansible.builtin.file:
+    path: /usr/local/bin/promtail
+    mode: '0744'
+
+- name: Copy promtail-local-config.yaml
+  ansible.builtin.copy:
+    src: /home/kali/crypto-poject_1/ansible/roles/promtail/files/promtail-local-config.yaml
+    dest: /etc/promtail-local-config.yaml
+    mode: "0644"
+
+- name: Copy promtail.service
+  ansible.builtin.copy:
+    src: /home/kali/crypto-poject_1/ansible/roles/promtail/files/promtail.service
+    dest: /etc/systemd/system/promtail.service
+    mode: "0644"    
+
+- name: Start and enable promtail
+  service:
+    name: promtail
+    state: started
+    enabled: true

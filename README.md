@@ -237,7 +237,151 @@ node1-01                   : ok=9    changed=1    unreachable=0    failed=0    s
 </details>
 
 3. Написать Ansible Role для Prometheus-exporter и настроить сбор метрик на работоспособность контейнера с нодой.
+
+<details>
+<summary>└─# ansible-playbook playbook.yml</summary>
+
+PLAY [install utils] *************************************************************************************************************************
+
+TASK [docker_install : Install docker packages] **********************************************************************************************
+changed: [node-01] => (item=apt-transport-https)
+ok: [node-01] => (item=ca-certificates)
+ok: [node-01] => (item=curl)
+ok: [node-01] => (item=software-properties-common)
+
+TASK [docker_install : Add Docker s official GPG key] ****************************************************************************************
+changed: [node-01]
+
+TASK [docker_install : Verify that we have the key with the fingerprint] *********************************************************************
+ok: [node-01]
+
+TASK [docker_install : Set up the stable repository] *****************************************************************************************
+changed: [node-01]
+
+TASK [docker_install : Update apt packages] **************************************************************************************************
+changed: [node-01]
+
+TASK [docker_install : Install docker] *******************************************************************************************************
+changed: [node-01]
+
+TASK [docker_install : Add remote "ubuntu" user to "docker" group] ***************************************************************************
+changed: [node-01]
+
+TASK [docker_install : Install docker-compose] ***********************************************************************************************
+changed: [node-01]
+
+TASK [container_pathfinder : Start container with healthstatus] ******************************************************************************
+changed: [node-01]
+
+TASK [prometheus-exporter : Get node-exporter distrib] ***************************************************************************************
+changed: [node-01]
+
+TASK [prometheus-exporter : Unarchive a file] ************************************************************************************************
+changed: [node-01]
+
+TASK [prometheus-exporter : Run Prometheus] **************************************************************************************************
+changed: [node-01]
+
+TASK [promtail : install dependencies] *******************************************************************************************************
+changed: [node-01]
+
+TASK [promtail : Get Promtail distrib] *******************************************************************************************************
+changed: [node-01]
+
+TASK [promtail : Unarchive a file] ***********************************************************************************************************
+changed: [node-01]
+
+TASK [promtail : Copy file] ******************************************************************************************************************
+changed: [node-01]
+
+TASK [promtail : Change permissions] *********************************************************************************************************
+ok: [node-01]
+
+TASK [promtail : Copy promtail-local-config.yaml] ********************************************************************************************
+changed: [node-01]
+
+TASK [promtail : Copy promtail.service] ******************************************************************************************************
+changed: [node-01]
+
+TASK [promtail : Start and enable promtail] **************************************************************************************************
+changed: [node-01]
+
+PLAY [install monitoring] ********************************************************************************************************************
+
+TASK [grafana : Update package libfontconfig1] ***********************************************************************************************
+changed: [monitoring-01]
+
+TASK [grafana : Get Grafana deb] *************************************************************************************************************
+changed: [monitoring-01]
+
+TASK [grafana : installed Grafana] ***********************************************************************************************************
+changed: [monitoring-01]
+
+TASK [grafana : Make sure grafana service is enabled and running] ****************************************************************************
+changed: [monitoring-01]
+
+TASK [prometheus : Get Loki distrib] *********************************************************************************************************
+changed: [monitoring-01]
+
+TASK [prometheus : Unarchive a file] *********************************************************************************************************
+changed: [monitoring-01]
+
+TASK [prometheus : Copy file] ****************************************************************************************************************
+changed: [monitoring-01]
+
+TASK [prometheus : Copy file] ****************************************************************************************************************
+changed: [monitoring-01]
+
+TASK [prometheus : Create a directory] *******************************************************************************************************
+changed: [monitoring-01]
+
+TASK [prometheus : Copy config.yaml] *********************************************************************************************************
+changed: [monitoring-01]
+
+TASK [prometheus : Copy prometheus console_libraries] ****************************************************************************************
+changed: [monitoring-01]
+
+TASK [prometheus : Copy prometheus.service] **************************************************************************************************
+changed: [monitoring-01]
+
+TASK [prometheus : Start and enable prometheus] **********************************************************************************************
+changed: [monitoring-01]
+
+TASK [loki : install dependencies] ***********************************************************************************************************
+changed: [monitoring-01]
+
+TASK [loki : Get Loki distrib] ***************************************************************************************************************
+changed: [monitoring-01]
+
+TASK [loki : Unarchive a file] ***************************************************************************************************************
+changed: [monitoring-01]
+
+TASK [loki : Copy file] **********************************************************************************************************************
+changed: [monitoring-01]
+
+TASK [loki : Change permissions] *************************************************************************************************************
+ok: [monitoring-01]
+
+TASK [loki : Create a directory] *************************************************************************************************************
+changed: [monitoring-01]
+
+TASK [loki : Copy loki-local-config.yaml] ****************************************************************************************************
+changed: [monitoring-01]
+
+TASK [loki : Copy loki.service] **************************************************************************************************************
+changed: [monitoring-01]
+
+TASK [loki : Start and enable loki] **********************************************************************************************************
+changed: [monitoring-01]
+
+PLAY RECAP ***********************************************************************************************************************************
+monitoring-01              : ok=22   changed=21    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+node-01                    : ok=20   changed=18    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+</details>
+
 4. Виртуализировать метрики через Grafana.
+
+![Ссылка 6](https://github.com/Firewal7/crypto-project/blob/main/image/1.6.jpg)
    
 ### Hard
 1. Развернуть несколько нод и систему мониторинга в облаке с помощью Terraform (можно использлвать любое облако на ваш выбор).

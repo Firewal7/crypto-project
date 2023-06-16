@@ -2,9 +2,12 @@
 # tasks file for grafana
  
 - name: Update package libfontconfig1
+  become: true
+  become_method: sudo
+  become_user: root
   apt:
     name:  libfontconfig1
-    state: fixed
+    state: present
 
 - name: Get Grafana deb
   ansible.builtin.get_url:
@@ -13,12 +16,13 @@
     mode: "0644"
 
 - name: installed Grafana
+  become: true
   ansible.builtin.command: dpkg -i grafana_7.0.3_amd64.deb
   register: deb_check
-
-- name: start and enable grafana-server
-  systemd:
-    name: grafana-server.service
+ 
+- name: Make sure grafana service is enabled and running
+  become: true
+  service:
+    name: grafana-server
+    enabled: yes
     state: started
-    enabled: true
-  

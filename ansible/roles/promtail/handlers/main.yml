@@ -1,0 +1,7 @@
+---
+# handlers file for promtail
+- name: restart promtail
+  systemd:
+    name: promtail
+    state: restarted
+    daemon_reload: true

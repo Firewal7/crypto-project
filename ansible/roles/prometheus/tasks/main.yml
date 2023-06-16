@@ -1,27 +1,111 @@
 ---
 # tasks file for prometheus
-- name: Get Prometheus distrib
+
+- name: Get Loki distrib
   ansible.builtin.get_url:
-    url: "https://github.com/prometheus/prometheus/releases/download/v2.45.0-rc.0/prometheus-2.45.0-rc.0.linux-amd64.tar.gz"
-    dest: "./prometheus-2.45.0-rc.0.linux-amd64.tar.gz"
+    url: "https://github.com/prometheus/prometheus/releases/download/v2.44.0/prometheus-2.44.0.linux-amd64.tar.gz"
+    dest: "./prometheus-2.44.0.linux-amd64.tar.gz"
     mode: "0644"
 
 - name: Unarchive a file 
   ansible.builtin.unarchive:
-    src: "./prometheus-2.45.0-rc.0.linux-amd64.tar.gz"
+    src: "./prometheus-2.44.0.linux-amd64.tar.gz"
     dest: ./
     remote_src: yes
 
-- name: Copy file prometheus.yml
+- name: Copy file 
+  become: true
+  ansible.builtin.copy:
+    src: /home/user/prometheus-2.44.0.linux-amd64/prometheus
+    dest: /usr/local/bin/
+    mode: "0744"
+    remote_src: true
+
+- name: Copy file 
+  become: true
+  ansible.builtin.copy:
+    src: /home/user/prometheus-2.44.0.linux-amd64/promtool
+    dest: /usr/local/bin/
+    mode: "0744"
+    remote_src: true
+
+#- name: Change permissions
+#  ansible.builtin.file:
+#    path: /usr/local/bin/loki
+#    mode: '0744'
+
+- name: Create a directory
+  ansible.builtin.shell: |
+    sudo mkdir -p /etc/prometheus
+
+- name: Copy config.yaml
+  become: true
   ansible.builtin.copy:
     src: /home/kali/crypto-poject_1/ansible/roles/prometheus/files/prometheus.yml
-    dest: /home/user/prometheus-2.45.0-rc.0.linux-amd64/prometheus.yml
+    dest: /etc/prometheus
     mode: "0644"
 
-- name: Run Prometheus
-  ansible.builtin.shell: |
-    cd /home/user/prometheus-2.45.0-rc.0.linux-amd64
-    sudo ./prometheus --config.file=./prometheus.yml &
+- name: Copy prometheus console_libraries
+  become: true
+  ansible.builtin.copy:
+    src: /home/user/prometheus-2.44.0.linux-amd64/console_libraries/
+    dest: /etc/prometheus
+    mode: "0644"    
+    remote_src: yes
+  notify: restart prometheus
+  
+- name: Copy prometheus.service
+  become: true
+  ansible.builtin.copy:
+    src: /home/kali/crypto-poject_1/ansible/roles/prometheus/files/prometheus.service
+    dest: /etc/systemd/system
+    mode: "0644"    
+  notify: restart prometheus
+
+- name: Start and enable prometheus
+  become: true
+  service:
+    name: prometheus
+    state: started
+    enabled: true
+
+
+
+
+
+
+
+
+
+#- name: Get Prometheus distrib
+#  ansible.builtin.get_url:
+#    url: "https://github.com/prometheus/prometheus/releases/download/v2.45.0-rc.0/prometheus-2.45.0-rc.0.linux-amd64.tar.gz"
+#    dest: "./prometheus-2.45.0-rc.0.linux-amd64.tar.gz"
+#    mode: "0644"
+
+#- name: Unarchive a file 
+#  ansible.builtin.unarchive:
+#    src: "./prometheus-2.45.0-rc.0.linux-amd64.tar.gz"
+#    dest: ./
+#    remote_src: yes
+
+#- name: Copy file prometheus.yml
+#  ansible.builtin.copy:
+#    src: /home/kali/crypto-poject_1/ansible/roles/prometheus/files/prometheus.yml
+#    dest: /home/user/prometheus-2.45.0-rc.0.linux-amd64/prometheus.yml
+#    mode: "0644"
+
+#- name: Run Prometheus
+#  ansible.builtin.shell: ./prometheus &
+#  become: true
+#  args:
+#    chdir: /home/user/prometheus-2.45.0-rc.0.linux-amd64/
+
+#- name: Run Prometheus
+#  ansible.builtin.shell: |
+#    cd /home/user/prometheus-2.45.0-rc.0.linux-amd64
+#    sudo ./prometheus --config.file=./prometheus.yml &
+     
 
 
 

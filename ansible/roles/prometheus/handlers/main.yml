@@ -1,7 +1,9 @@
 ---
 # handlers file for prometheus
+
 - name: restart prometheus
-  systemd:
+  service:
     name: prometheus
     state: restarted
-    daemon_reload: true
+    enabled: yes
+
