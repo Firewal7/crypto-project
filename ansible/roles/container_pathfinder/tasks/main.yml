@@ -1,6 +1,6 @@
 ---
-  - name: Start container with healthstatus
-    community.docker.docker_container:
+- name: Start container with healthstatus
+  community.docker.docker_container:
       name: pathfinder
       image: eqlabs/pathfinder:latest
       command: --ethereum.url https://eth-goerli.g.alchemy.com/v2/xIfcRx19SCf05gMKkEL7RJDexILs4ykB

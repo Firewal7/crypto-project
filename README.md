@@ -20,7 +20,7 @@
 4. :white_check_mark: Виртуализировать метрики через Grafana.
    
 ### Hard
-1. Развернуть несколько нод и систему мониторинга в облаке с помощью Terraform (можно использлвать любое облако на ваш выбор).
+1. :white_check_mark: Развернуть несколько нод и систему мониторинга в облаке с помощью Terraform (можно использлвать любое облако на ваш выбор).
 2. Настроить систему оповещений при достижении критических событий (заканчивается место на ноде или упал контейнер). Оповещения настроить в телеграмм.
 3. Сделать CI/CD-пайплайн для развертывания нод и автоматизировать тестирование ролей в репозитории.
 4. Развернуть ноды в облачном Kubernetes на ваш выбор. Предусмотреть автомасштабирование нод в зависимости от потребляемых ими ресурсов.
@@ -386,7 +386,311 @@ node-01                    : ok=20   changed=18    unreachable=0    failed=0    
 ![Ссылка 7](https://github.com/Firewal7/crypto-project/blob/main/image/1.7.jpg)
    
 ### Hard
-1. Развернуть несколько нод и систему мониторинга в облаке с помощью Terraform (можно использлвать любое облако на ваш выбор).
+1. :white_check_mark: Развернуть несколько нод и систему мониторинга в облаке с помощью Terraform (можно использлвать любое облако на ваш выбор).
+
+![Ссылка 8](https://github.com/Firewal7/crypto-project/blob/main/image/1.8.jpg)
+
+<details>
+<summary>└─# terraform apply</summary>
+
+data.yandex_compute_image.ubuntu: Reading...
+data.yandex_compute_image.ubuntu: Read complete after 1s [id=fd83vhe8fsr4pe98v6oj]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # yandex_compute_instance.platform-monitoring will be created
+  + resource "yandex_compute_instance" "platform-monitoring" {
+      + created_at                = (known after apply)
+      + folder_id                 = (known after apply)
+      + fqdn                      = (known after apply)
+      + gpu_cluster_id            = (known after apply)
+      + hostname                  = (known after apply)
+      + id                        = (known after apply)
+      + metadata                  = {
+          + "serial-port-enable" = "1"
+          + "ssh-keys"           = "ssh-rsa 
+        }
+      + name                      = "monitoring"
+      + network_acceleration_type = "standard"
+      + platform_id               = "standard-v1"
+      + service_account_id        = (known after apply)
+      + status                    = (known after apply)
+      + zone                      = (known after apply)
+
+      + boot_disk {
+          + auto_delete = true
+          + device_name = (known after apply)
+          + disk_id     = (known after apply)
+          + mode        = (known after apply)
+
+          + initialize_params {
+              + block_size  = (known after apply)
+              + description = (known after apply)
+              + image_id    = "fd83vhe8fsr4pe98v6oj"
+              + name        = (known after apply)
+              + size        = 20
+              + snapshot_id = (known after apply)
+              + type        = "network-hdd"
+            }
+        }
+
+      + metadata_options {
+          + aws_v1_http_endpoint = (known after apply)
+          + aws_v1_http_token    = (known after apply)
+          + gce_http_endpoint    = (known after apply)
+          + gce_http_token       = (known after apply)
+        }
+
+      + network_interface {
+          + index              = (known after apply)
+          + ip_address         = (known after apply)
+          + ipv4               = true
+          + ipv6               = (known after apply)
+          + ipv6_address       = (known after apply)
+          + mac_address        = (known after apply)
+          + nat                = true
+          + nat_ip_address     = (known after apply)
+          + nat_ip_version     = (known after apply)
+          + security_group_ids = (known after apply)
+          + subnet_id          = (known after apply)
+        }
+
+      + placement_policy {
+          + host_affinity_rules = (known after apply)
+          + placement_group_id  = (known after apply)
+        }
+
+      + resources {
+          + core_fraction = 100
+          + cores         = 2
+          + memory        = 2
+        }
+
+      + scheduling_policy {
+          + preemptible = true
+        }
+    }
+
+  # yandex_compute_instance.platform-node1 will be created
+  + resource "yandex_compute_instance" "platform-node1" {
+      + created_at                = (known after apply)
+      + folder_id                 = (known after apply)
+      + fqdn                      = (known after apply)
+      + gpu_cluster_id            = (known after apply)
+      + hostname                  = (known after apply)
+      + id                        = (known after apply)
+      + metadata                  = {
+          + "serial-port-enable" = "1"
+          + "ssh-keys"           = "ssh-rsa 
+        }
+      + name                      = "node1"
+      + network_acceleration_type = "standard"
+      + platform_id               = "standard-v1"
+      + service_account_id        = (known after apply)
+      + status                    = (known after apply)
+      + zone                      = (known after apply)
+
+      + boot_disk {
+          + auto_delete = true
+          + device_name = (known after apply)
+          + disk_id     = (known after apply)
+          + mode        = (known after apply)
+
+          + initialize_params {
+              + block_size  = (known after apply)
+              + description = (known after apply)
+              + image_id    = "fd83vhe8fsr4pe98v6oj"
+              + name        = (known after apply)
+              + size        = 20
+              + snapshot_id = (known after apply)
+              + type        = "network-hdd"
+            }
+        }
+
+      + metadata_options {
+          + aws_v1_http_endpoint = (known after apply)
+          + aws_v1_http_token    = (known after apply)
+          + gce_http_endpoint    = (known after apply)
+          + gce_http_token       = (known after apply)
+        }
+
+      + network_interface {
+          + index              = (known after apply)
+          + ip_address         = (known after apply)
+          + ipv4               = true
+          + ipv6               = (known after apply)
+          + ipv6_address       = (known after apply)
+          + mac_address        = (known after apply)
+          + nat                = true
+          + nat_ip_address     = (known after apply)
+          + nat_ip_version     = (known after apply)
+          + security_group_ids = (known after apply)
+          + subnet_id          = (known after apply)
+        }
+
+      + placement_policy {
+          + host_affinity_rules = (known after apply)
+          + placement_group_id  = (known after apply)
+        }
+
+      + resources {
+          + core_fraction = 100
+          + cores         = 2
+          + memory        = 2
+        }
+
+      + scheduling_policy {
+          + preemptible = true
+        }
+    }
+
+  # yandex_compute_instance.platform-node2 will be created
+  + resource "yandex_compute_instance" "platform-node2" {
+      + created_at                = (known after apply)
+      + folder_id                 = (known after apply)
+      + fqdn                      = (known after apply)
+      + gpu_cluster_id            = (known after apply)
+      + hostname                  = (known after apply)
+      + id                        = (known after apply)
+      + metadata                  = {
+          + "serial-port-enable" = "1"
+          + "ssh-keys"           = "ssh-rsa 
+        }
+      + name                      = "node2"
+      + network_acceleration_type = "standard"
+      + platform_id               = "standard-v1"
+      + service_account_id        = (known after apply)
+      + status                    = (known after apply)
+      + zone                      = (known after apply)
+
+      + boot_disk {
+          + auto_delete = true
+          + device_name = (known after apply)
+          + disk_id     = (known after apply)
+          + mode        = (known after apply)
+
+          + initialize_params {
+              + block_size  = (known after apply)
+              + description = (known after apply)
+              + image_id    = "fd83vhe8fsr4pe98v6oj"
+              + name        = (known after apply)
+              + size        = 20
+              + snapshot_id = (known after apply)
+              + type        = "network-hdd"
+            }
+        }
+
+      + metadata_options {
+          + aws_v1_http_endpoint = (known after apply)
+          + aws_v1_http_token    = (known after apply)
+          + gce_http_endpoint    = (known after apply)
+          + gce_http_token       = (known after apply)
+        }
+
+      + network_interface {
+          + index              = (known after apply)
+          + ip_address         = (known after apply)
+          + ipv4               = true
+          + ipv6               = (known after apply)
+          + ipv6_address       = (known after apply)
+          + mac_address        = (known after apply)
+          + nat                = true
+          + nat_ip_address     = (known after apply)
+          + nat_ip_version     = (known after apply)
+          + security_group_ids = (known after apply)
+          + subnet_id          = (known after apply)
+        }
+
+      + placement_policy {
+          + host_affinity_rules = (known after apply)
+          + placement_group_id  = (known after apply)
+        }
+
+      + resources {
+          + core_fraction = 100
+          + cores         = 2
+          + memory        = 2
+        }
+
+      + scheduling_policy {
+          + preemptible = true
+        }
+    }
+
+  # yandex_vpc_network.develop will be created
+  + resource "yandex_vpc_network" "develop" {
+      + created_at                = (known after apply)
+      + default_security_group_id = (known after apply)
+      + folder_id                 = (known after apply)
+      + id                        = (known after apply)
+      + labels                    = (known after apply)
+      + name                      = "develop"
+      + subnet_ids                = (known after apply)
+    }
+
+  # yandex_vpc_subnet.develop will be created
+  + resource "yandex_vpc_subnet" "develop" {
+      + created_at     = (known after apply)
+      + folder_id      = (known after apply)
+      + id             = (known after apply)
+      + labels         = (known after apply)
+      + name           = "develop"
+      + network_id     = (known after apply)
+      + v4_cidr_blocks = [
+          + "10.0.1.0/24",
+        ]
+      + v6_cidr_blocks = (known after apply)
+      + zone           = "ru-central1-a"
+    }
+
+Plan: 5 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + vm_external_ip_address_monitoring = (known after apply)
+  + vm_external_ip_address_node1      = (known after apply)
+  + vm_external_ip_address_node2      = (known after apply)
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+yandex_vpc_network.develop: Creating...
+yandex_vpc_network.develop: Creation complete after 1s [id=enpu716885jpim90a1tv]
+yandex_vpc_subnet.develop: Creating...
+yandex_vpc_subnet.develop: Creation complete after 1s [id=e9bripcvupl7it69ruip]
+yandex_compute_instance.platform-monitoring: Creating...
+yandex_compute_instance.platform-node2: Creating...
+yandex_compute_instance.platform-node1: Creating...
+yandex_compute_instance.platform-monitoring: Still creating... [10s elapsed]
+yandex_compute_instance.platform-node2: Still creating... [10s elapsed]
+yandex_compute_instance.platform-node1: Still creating... [10s elapsed]
+yandex_compute_instance.platform-monitoring: Still creating... [20s elapsed]
+yandex_compute_instance.platform-node2: Still creating... [20s elapsed]
+yandex_compute_instance.platform-node1: Still creating... [20s elapsed]
+yandex_compute_instance.platform-monitoring: Still creating... [30s elapsed]
+yandex_compute_instance.platform-node2: Still creating... [30s elapsed]
+yandex_compute_instance.platform-node1: Still creating... [30s elapsed]
+yandex_compute_instance.platform-node1: Creation complete after 31s [id=fhmmsk5lomfisu2u91ga]
+yandex_compute_instance.platform-monitoring: Still creating... [40s elapsed]
+yandex_compute_instance.platform-node2: Still creating... [40s elapsed]
+yandex_compute_instance.platform-monitoring: Creation complete after 42s [id=fhms4d8a0rpejpr6hdnj]
+yandex_compute_instance.platform-node2: Creation complete after 43s [id=fhm6rtll14vrpe0ag0gj]
+
+Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+vm_external_ip_address_monitoring = "10.0.1.6"
+vm_external_ip_address_node1 = "10.0.1.10"
+vm_external_ip_address_node2 = "10.0.1.13"
+
+</details>
+
 2. Настроить систему оповещений при достижении критических событий (заканчивается место на ноде или упал контейнер). Оповещения настроить в телеграмм.
 3. Сделать CI/CD-пайплайн для развертывания нод и автоматизировать тестирование ролей в репозитории.
 4. Развернуть ноды в облачном Kubernetes на ваш выбор. Предусмотреть автомасштабирование нод в зависимости от потребляемых ими ресурсов.
