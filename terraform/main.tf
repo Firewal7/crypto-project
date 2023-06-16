@@ -13,6 +13,8 @@ data "yandex_compute_image" "ubuntu" {
    family = var.vm_web_image
 }
 
+# VM Monitoring
+
 resource "yandex_compute_instance" "platform-monitoring" {
   name        = "${local.monitoring}" 
   platform_id = "standard-v1"
@@ -45,6 +47,8 @@ resource "yandex_compute_instance" "platform-monitoring" {
   }
 }
 
+# VM Node1
+
 resource "yandex_compute_instance" "platform-node1" {
 
   name        = "${local.node1}"
@@ -76,6 +80,8 @@ resource "yandex_compute_instance" "platform-node1" {
     ssh-keys           = var.vms_ssh_root_key.ssh-keys
   }
 }
+
+# VM Node2
 
 resource "yandex_compute_instance" "platform-node2" {
 
