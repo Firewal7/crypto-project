@@ -321,11 +321,11 @@ vm_external_ip_address_node2 = "10.0.1.13"
 
 </details>
 
-2. :white_check_mark: Зарегистрировать приложение в сервисе Academy, если планируете получение наград в будущем. 
+2. Зарегистрировать приложение в сервисе Academy, если планируете получение наград в будущем. 
 
 ![Ссылка 2](https://github.com/Firewal7/crypto-project/blob/main/image/1.2.jpg)
 
-3. :white_check_mark: Установить докер на node1 и запустить ноду через docker-compose.
+3. Установить докер на node1 и запустить ноду через docker-compose.
 ```
 user@node1:~$ docker --version
 Docker version 24.0.2, build cb74dfc
@@ -351,7 +351,7 @@ services:
 ```
 PATHFINDER_ETHEREUM_API_URL=https://eth-goerli.g.alchemy.com/v2/https://eth-goerli.g.alchemy.com/v2/xIfcRx19SCf05gMKkEL7RJDexILs4ykB
 ```
-4. :white_check_mark: Настроить dockerfile инструкцию HEALTHCHECK и добавить проверку в проект.
+4. Настроить dockerfile инструкцию HEALTHCHECK и добавить проверку в проект.
 
 - Добавляем в docker-compose.yml 
 ```
@@ -368,7 +368,7 @@ PATHFINDER_ETHEREUM_API_URL=https://eth-goerli.g.alchemy.com/v2/https://eth-goer
 CONTAINER ID   IMAGE                      COMMAND                  CREATED          STATUS                             PORTS                                       NAMES
 1e88e9f6511b   eqlabs/pathfinder:latest   "/usr/bin/tini -- /u…"   59 seconds ago   Up 58 seconds (health: starting)   0.0.0.0:9545->9545/tcp, :::9545->9545/tcp   crypto-project_starknet-node_1
 ```
-5. :white_check_mark: Написать Ansible-Playbook для развертывания приложения и вынести в отдельную Ansible Role атомарные операции.
+5. Написать Ansible-Playbook для развертывания приложения и вынести в отдельную Ansible Role атомарные операции.
 
 [Ansible-Playbook](https://github.com/Firewal7/crypto-project/blob/main/ansible/playbook.yml)
 
